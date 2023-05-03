@@ -1,0 +1,8 @@
+version: '3'
+services:
+  quorum:
+    build: .
+    volumes:
+      - ./deliverable_data:/deliverable_data
+    command: >
+      bash -c "python quorum.py --debug"
