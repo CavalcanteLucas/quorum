@@ -54,6 +54,16 @@ def get_legislator_vote_count(
     the number of bills supported and opposed, respectively, by each legislator.
     """
 
+    """
+    SELECT legislator.id,
+           legislator.name
+           COUNT(CASE WHEN vote_results.vote_type = 1 THEN TRUE ELSE NULL END) as num_supported_bills,
+           COUNT(CASE WHEN vote_results.vote_type = 2 THEN TRUE ELSE NULL END) as num_opposed_bills
+    FROM legislators
+LEFT JOIN vote_results ON vote_results.legislator_id = legislators.id
+    GROUP BY legislator.id, legislator.name
+    """
+
     vote_counts = (
         vote_results_df.groupby(
             [
@@ -137,6 +147,7 @@ def get_bill_vote_counts(
             bills_df,
             left_on="bill_id",
             right_on="id",
+            how="right",
         )
         .merge(
             legislators_df,
