@@ -1,7 +1,6 @@
 import pandas as pd
-from pathlib import Path
 from vote_type import VoteType
-from loaded_data import (
+from loaded_data_frames import (
     bills_df,
     legislators_df,
     vote_results_df,

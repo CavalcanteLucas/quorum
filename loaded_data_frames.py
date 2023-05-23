@@ -10,7 +10,7 @@ VOTES_FILE = "votes.csv"
 LEGISLATOR_VOTE_COUNT_FILE = "legislator_vote_count.csv"
 BILLS_VOTE_COUNT_FILE = "bills.csv"
 
-# Load data
+# Load CSV as DataFRames
 bills_df = load_csv_file(BILLS_FILE)
 legislators_df = load_csv_file(LEGISLATORS_FILE)
 vote_results_df = load_csv_file(VOTE_RESULTS_FILE)
